@@ -51,3 +51,36 @@ function($) {
     $.Navbar.init()
 }(window.jQuery);
 
+$(".select2").select2();
+$('.input-daterange').datepicker({
+                                    todayBtn: 'linked',
+                                    format: 'dd/mm/yyyy',
+                                    startDate: '+0d',
+                                    endDate: '+2m',
+                                    autoclose: true
+                                });
+$("form#ajax_load").submit(function (e) {
+            e.preventDefault();
+            var k_data = $(this).serialize();
+            var k_url = $(this).attr('action');
+            $.ajax({
+                    url: k_url,
+                    data: k_data,
+                    timeout: false,
+                    type: 'POST',
+                    dataType: 'JSON',
+                    success: function (resp) {
+                        if (resp.success) {
+                            $('#result').html('<div class="alert alert-success clearfix" align="center" role="alert">'+resp.msg+'</div>');
+                            if (resp.redirect) {
+                            window.location.replace(resp.redirect);
+                            }
+                        } else {
+                            $('#result').html('<div class="alert alert-danger clearfix" align="center" role="alert">'+resp.msg+'</div>');
+                        }
+                    }, error: function (a, b, c) {
+                        $('#result').html('<div class="alert alert-danger clearfix" role="alert">'+c+'</div>');
+                    }
+            });
+            return false;
+        });

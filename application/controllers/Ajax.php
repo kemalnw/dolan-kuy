@@ -6,14 +6,14 @@ class Ajax extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if (! $this->input->is_ajax_request())
-		   exit('Access denied');
-    	$this->load->library('form_validation');
+		$this->load->library('form_validation');
     	$this->load->helper('dolankuy_helper');
 	}
 
 	public function signin()
 	{
+		if (! $this->input->post())
+			exit('Access denied');
 		$email	  = $this->input->post('email');
 		$password = $this->input->post('password');
 		$this->form_validation->set_rules('email','Alamat Email','trim|required|valid_email');
@@ -33,16 +33,23 @@ class Ajax extends CI_Controller {
 							'status'	=> $user->status
 							);
 			$this->session->set_userdata('auth', $session);
-			$out = array('success' => 1, 'msg' => '<b>Berhasil !</b> Anda Akan Dialihkan...', 'redirect' => base_url('home'));
+			if ($user->status == 'admin') {
+				$ref = base_url('admin');
+			} else {
+				$ref = base_url();
+			}
 		} catch (Exception $e) {
 			if (validation_errors()) {
-				$out = array('success' => 0, 'msg' => 'Isi formulir sesuai kriteria');
+				$ref = base_url('account/signin?error=[true]&type=warning&msg='.urlencode('isi formulir sesuai kriteria'));
 			} else {
-				$out = array('success' => 0, 'msg' => $e->getMessage());
+				$ref = base_url('account/signin?error=[true]&type=info&msg='.urlencode($e->getMessage()));
 			}
+			$this->session->set_flashdata('error', TRUE);
 		}
 		$this->output
-			->set_content_type('application/json')
-			->set_output(json_encode($out));
+				->set_status_header(303)
+				->set_content_type('text/html; charset=UTF-8')
+				->set_header('X-PJAX-URL: ' .$ref)
+				->set_header('Location: '.$ref, false);
 	}
 }

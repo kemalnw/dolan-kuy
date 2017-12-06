@@ -26,6 +26,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?=base_url('assets/plugins/bootstrap-sweetalert/sweet-alert.css')?>" rel="stylesheet" type="text/css" />
     <link href="<?=base_url('assets/css/responsive.css')?>" rel="stylesheet" type="text/css" />
 
+    <!-- DataTables -->
+    <link href="<?=base_url('assets/plugins/datatables/jquery.dataTables.min.css')?>" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url('assets/plugins/datatables/buttons.bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url('assets/plugins/datatables/fixedHeader.bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url('assets/plugins/datatables/responsive.bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url('assets/plugins/datatables/scroller.bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
+
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -79,6 +86,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             }
                             ?>
                         </ul>
+                        <div class="menu-item">
+                            <!-- Mobile menu toggle-->
+                            <a class="navbar-toggle">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                            <!-- End mobile menu toggle-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-custom">
+                <div class="container">
+                    <div id="navigation">
+                        <!-- Navigation Menu-->
+                        <ul class="navigation-menu">
+                            <li>
+                                <a href="<?=base_url('admin')?>" data-pjax="#body"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url('admin/dataCustomers')?>" data-pjax="#body"><i class="zmdi zmdi-file-text"></i> <span> Data Customers </span> </a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url('admin/dataArmada')?>" data-pjax="#body"><i class="zmdi zmdi-file-text"></i> <span> Data Armada </span> </a>
+                            </li>
+                            <li>
+                                <a href="index.html"><i class="zmdi zmdi-file-text"></i> <span> Data Penyewaan </span> </a>
+                            </li>
+                        </ul>
+                        <!-- End navigation menu  -->
                     </div>
                 </div>
             </div>
@@ -90,7 +131,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="container">
 
                 <!-- Page-Title -->
-                <div class="row" style="margin-top: 20px;">
+                <div class="row" style="margin-top: 50px;">
                 <?=$content?>
                 </div>
                 <!-- Footer -->
@@ -109,12 +150,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             </div>
             <!-- end container -->
-
-
-
-
-        </div>
-
     <!-- jQuery  -->
     <script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
     <script src="<?=base_url('assets/js/detect.js')?>"></script>
@@ -133,6 +168,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?=base_url('assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')?>"></script>
     <script src="<?=base_url('assets/plugins/jquery-pjax/jquery.pjax.min.js')?>"></script>
     <script src="<?=base_url('assets/plugins/Nprogress/nprogress.js')?>"></script>
+    <script src="<?=base_url('assets/plugins/flot-chart/jquery.flot.js')?>"></script>
+    <script src="<?=base_url('assets/plugins/flot-chart/jquery.flot.time.js')?>"></script>
+    <script src="<?=base_url('assets/plugins/flot-chart/jquery.flot.tooltip.min.js')?>"></script>
+    <script src="<?=base_url('assets/plugins/flot-chart/jquery.flot.resize.js')?>"></script>
+    <script src="<?=base_url('assets/plugins/datatables/jquery.dataTables.min.js')?>"></script>
+    <script src="<?=base_url('assets/plugins/datatables/dataTables.bootstrap.js')?>"></script>
+    <script src="<?=base_url('assets/plugins/datatables/dataTables.responsive.min.js')?>"></script>
+    <script src="<?=base_url('assets/plugins/datatables/responsive.bootstrap.min.js')?>"></script>
 
 
     <!-- App js -->

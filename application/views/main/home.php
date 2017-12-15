@@ -41,6 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<center><div class="panel-title" style="font-size: 20px;">Tentukan Perjalanan Anda</div></center>
 		</div>
 		<div class="panel-body">
+            <?= form_open('search', array('method'=>'get')) ?>
 			<div class="col-md-4">
 				<div class="form-group">
 					<label>Lokasi Penjemputan</label>
@@ -48,11 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="input-group-addon">
 							<i class="fa fa-map-marker"></i>
 						</div>
-						<select class="form-control select2" data-placeholder="Tentukan Lokasi ...">
-							<option>Surakarta</option>
-							<option>DKI Jakarta</option>
-							<option>Bandung</option>
-							<option>Surabaya</option>
+						<select class="form-control select2" data-placeholder="Tentukan Lokasi ..." name="regionalArea">
+							<option value="Surakarta">Surakarta</option>
+							<option value="DKI Jakarta">DKI Jakarta</option>
+							<option value="Bandung">Bandung</option>
+							<option value="Surabaya">Surabaya</option>
 	                    </select>
                     </div>
 				</div>
@@ -92,7 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="input-group-addon">
 									<i class="fa fa-car"></i>
 								</div>
-								<input type="number" class="form-control" name="" max="4" min="0">
+								<input type="number" class="form-control" name="car" max="4" min="0">
 	                        </div>
 						</div>
 					</div>
@@ -104,6 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
+        </form>
 		</div>
 	</div>
 </div>
@@ -136,7 +138,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <img src="<?=base_url('assets/images/gallery/bali.png')?>" width="100%" height="277">
         </div>
 	</div>
-</div>
-<div class="col-md-12" style="margin-top: 30px;">
-	<h1 align="center" style="margin-bottom: 50px;">Partner Pembayaran</h1>
 </div>

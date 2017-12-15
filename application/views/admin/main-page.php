@@ -32,6 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?=base_url('assets/plugins/datatables/fixedHeader.bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
     <link href="<?=base_url('assets/plugins/datatables/responsive.bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
     <link href="<?=base_url('assets/plugins/datatables/scroller.bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url('assets/plugins/custombox/dist/custombox.min.css')?>" rel="stylesheet">
 
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     </head>
 
-    <body id="body">
+    <body>
 
         <!-- Navigation Bar-->
         <header id="topnav">
@@ -73,12 +74,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             } else {
                             ?>
                             <li class="user-box">
-                                <a href="<?=base_url('account/settings')?>" data-pjax="#body" class="waves-effect waves-light profile" aria-expanded="true">
+                                <a href="<?=base_url('account/history')?>" class="waves-effect waves-light profile" aria-expanded="true">
                                 <span><?=$session['email']?></span>
                                 </a>
                             </li>
                             <li class="user-box">
-                                <a href="<?=base_url('account/signout')?>" data-pjax="#body" class="waves-effect waves-light profile" aria-expanded="true">
+                                <a href="<?=base_url('account/signout')?>" class="waves-effect waves-light profile" aria-expanded="true">
                                 <span>Keluar</span>
                                 </a>
                             </li>
@@ -107,16 +108,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <!-- Navigation Menu-->
                         <ul class="navigation-menu">
                             <li>
-                                <a href="<?=base_url('admin')?>" data-pjax="#body"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
-                            </li>
-                            <li>
                                 <a href="<?=base_url('admin/dataCustomers')?>" data-pjax="#body"><i class="zmdi zmdi-file-text"></i> <span> Data Customers </span> </a>
                             </li>
                             <li>
                                 <a href="<?=base_url('admin/dataArmada')?>" data-pjax="#body"><i class="zmdi zmdi-file-text"></i> <span> Data Armada </span> </a>
                             </li>
                             <li>
-                                <a href="index.html"><i class="zmdi zmdi-file-text"></i> <span> Data Penyewaan </span> </a>
+                                <a href="<?=base_url('admin/dataPembayaran')?>" data-pjax="#body"><i class="zmdi zmdi-file-text"></i> <span> Data Pembayaran </span> </a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url('admin/dataSewa')?>" data-pjax="#body"><i class="zmdi zmdi-file-text"></i> <span> Data Persewaan </span> </a>
                             </li>
                         </ul>
                         <!-- End navigation menu  -->
@@ -128,7 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         <div class="wrapper">
-            <div class="container">
+            <div class="container" id="body">
 
                 <!-- Page-Title -->
                 <div class="row" style="margin-top: 50px;">
@@ -150,6 +151,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             </div>
             <!-- end container -->
+        <script type="text/javascript">
+            var base_url = "<?=base_url()?>";
+        </script>
     <!-- jQuery  -->
     <script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
     <script src="<?=base_url('assets/js/detect.js')?>"></script>
@@ -176,6 +180,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?=base_url('assets/plugins/datatables/dataTables.bootstrap.js')?>"></script>
     <script src="<?=base_url('assets/plugins/datatables/dataTables.responsive.min.js')?>"></script>
     <script src="<?=base_url('assets/plugins/datatables/responsive.bootstrap.min.js')?>"></script>
+    <script src="<?=base_url('assets/plugins/custombox/dist/custombox.min.js')?>"></script>
+    <script src="<?=base_url('assets/plugins/custombox/dist/legacy.min.js')?>"></script>
 
 
     <!-- App js -->

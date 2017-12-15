@@ -57,104 +57,49 @@ sessionStorage['pjax'] = true;
 $.pjax.defaults.timeout = 20000;
 $(document).pjax('a[data-pjax]');
 $(document).on('submit', 'form[data-pjax]', function(event) {event.preventDefault(); $.pjax.submit(event)});
+function getCustomerInfo(uid) {
+  $.getJSON(base_url+"ajax/getCustomerInfo/"+uid+"/", function(resp){
+      $("#uid").val(uid);
+      $("#nama_depan").val(resp.nama_depan);
+      $("#nama_belakang").val(resp.nama_belakang);
+      $("#hp").val(resp.hp);
+      $("#email").val(resp.email);
+      $("#alamat").val(resp.alamat);
+  });
+}
+function getArmadaInfo(id) {
+  $.getJSON(base_url+"ajax/getArmadaInfo/"+id+"/", function(resp){
+      $("#id").val(id);
+      $("#nama_armada").val(resp.nama_armada);
+      $("#kota option[value='"+resp.kota+"']").attr("selected","selected");
+      $("#price").val(resp.harga_sewa);
+      $("select#editstatus option[value='"+resp.status+"']").attr("selected","selected");
+      $("#desc").val(resp.desc);
+  });
+}
+
 function __load() {
+    jQuery.fn.exists = function(){ return this.length > 0; }
     $(".select2").select2();
     $('.input-daterange').datepicker({
                                         todayBtn: 'linked',
-                                        format: 'dd/mm/yyyy',
+                                        format: 'dd-mm-yyyy',
                                         startDate: '+0d',
                                         endDate: '+2m',
                                         autoclose: true
                                     });
-
-    $('#datatable').dataTable();
-
-
-
-
-
-    function showTooltip(x, y, contents) {
-      $('<div id="tooltip" class="tooltipflot">' + contents + '</div>').css({
-        position : 'absolute',
-        top : y + 5,
-        left : x + 5
-      }).appendTo("body").fadeIn(200);
+    if($("#datatable").exists()) {
+      $('#datatable').dataTable();
     }
-
-    var selector = "#website-stats";
-    var data1 = [[0, 9], [1, 8], [2, 5], [3, 8], [4, 5], [5, 14], [6, 10]];
-    var labels = ["Sewa"];
-    var colors = ['#188ae2'];
-    var borderColor = '#f5f5f5';
-    var bgColor = '#fff';
-
-    $.plot($(selector), [{
-      data : data1,
-      label : labels,
-      color : colors
-    }], {
-      series : {
-        lines : {
-          show : true,
-          fill : true,
-          lineWidth : 2,
-          fillColor : {
-            colors : [{
-              opacity : 0.4
-            }, {
-              opacity : 0.4
-            }]
-          }
-        },
-        points : {
-          show : false
-        },
-        shadowSize : 0
-      },
-
-      grid : {
-        hoverable : true,
-        clickable : true,
-        borderColor : borderColor,
-        tickColor : "#f9f9f9",
-        borderWidth : 1,
-        labelMargin : 10,
-        backgroundColor : bgColor
-      },
-      legend : {
-        position : "ne",
-        margin : [0, -24],
-        noColumns : 0,
-        labelBoxBorderColor : null,
-        labelFormatter : function(label, series) {
-          // just add some space to labes
-          return '' + label + '&nbsp;&nbsp;';
-        },
-        width : 30,
-        height : 2
-      },
-      yaxis : {
-        tickColor : '#f5f5f5',
-        font : {
-          color : '#bdbdbd'
-        }
-      },
-      xaxis : {
-        tickColor : '#f5f5f5',
-        font : {
-          color : '#bdbdbd'
-        }
-      },
-      tooltip : true,
-      tooltipOpts : {
-        content : '%s: Value of %x is %y',
-        shifts : {
-          x : -60,
-          y : 25
-        },
-        defaultTheme : false
-      }
+    $("#login").click(function(){
+      $("#signup").hide();
+      $("#signin").show();
     });
+    $("#daftar").click(function(){
+      $("#signin").hide();
+      $("#signup").show();
+    });
+
 }
 $(__load);
 $(document).on('pjax:success', __load);

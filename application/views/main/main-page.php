@@ -26,6 +26,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?=base_url('assets/plugins/bootstrap-sweetalert/sweet-alert.css')?>" rel="stylesheet" type="text/css" />
     <link href="<?=base_url('assets/css/responsive.css')?>" rel="stylesheet" type="text/css" />
 
+    <!-- DataTables -->
+    <link href="<?=base_url('assets/plugins/datatables/jquery.dataTables.min.css')?>" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url('assets/plugins/datatables/buttons.bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url('assets/plugins/datatables/fixedHeader.bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url('assets/plugins/datatables/responsive.bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url('assets/plugins/datatables/scroller.bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url('assets/plugins/custombox/dist/custombox.min.css')?>" rel="stylesheet">
+
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -66,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             } else {
                             ?>
                             <li class="user-box">
-                                <a href="<?=base_url('account/settings')?>" data-pjax="#body" class="waves-effect waves-light profile" aria-expanded="true">
+                                <a href="<?=base_url('account/history')?>" class="waves-effect waves-light profile" aria-expanded="true">
                                 <span><?=$session['email']?></span>
                                 </a>
                             </li>
@@ -133,6 +141,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?=base_url('assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')?>"></script>
     <script src="<?=base_url('assets/plugins/jquery-pjax/jquery.pjax.min.js')?>"></script>
     <script src="<?=base_url('assets/plugins/Nprogress/nprogress.js')?>"></script>
+    <script src="<?=base_url('assets/plugins/datatables/jquery.dataTables.min.js')?>"></script>
+    <script src="<?=base_url('assets/plugins/datatables/dataTables.bootstrap.js')?>"></script>
+    <script src="<?=base_url('assets/plugins/datatables/dataTables.responsive.min.js')?>"></script>
 
 
     <!-- App js -->

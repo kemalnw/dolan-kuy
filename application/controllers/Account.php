@@ -23,4 +23,17 @@ class Account extends CI_Controller {
 				->set_header('X-PJAX-URL: ' .base_url())
 				->set_header('Location: '.base_url(), false);
 	}
+
+	public function history()
+	{
+		if (! $this->session->userdata('auth')){
+			redirect(base_url('account/signin'));
+		}
+		$_session = $this->session->userdata('auth');
+		$this->load->model('akun');
+		$data['history']	=   $this->akun->getHistory($_session['id']);
+		$data['session']    =   $_session;
+        $data['content']    =   $this->load->view('main/history', $data, TRUE);
+        $this->load->view('main/main-page', $data);
+	}
 }
